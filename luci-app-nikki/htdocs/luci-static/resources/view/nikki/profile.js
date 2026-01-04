@@ -71,10 +71,9 @@ return view.extend({
         o.rmempty = false;
 
         o = s.option(form.Value, 'user_agent', _('User Agent'));
-        o.default = 'clash';
+        o.default = 'clash.meta';
         o.modalonly = true;
         o.rmempty = false;
-        o.value('clash');
         o.value('clash.meta');
         o.value('mihomo');
 

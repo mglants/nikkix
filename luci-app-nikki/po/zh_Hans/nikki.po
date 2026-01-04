@@ -79,19 +79,11 @@ msgstr "黑名单模式"
 msgid "Bypass"
 msgstr "绕过"
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:173
-msgid "Bypass China Mainland IP"
-msgstr "绕过中国大陆 IP"
-
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:176
-msgid "Bypass China Mainland IP6"
-msgstr "绕过中国大陆 IP6"
-
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:189
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:183
 msgid "Bypass DSCP"
 msgstr "绕过 DSCP"
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:192
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:186
 msgid "Bypass FWMark"
 msgstr "绕过 FWMark"
 

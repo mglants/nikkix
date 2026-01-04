@@ -72,19 +72,11 @@ msgstr ""
 msgid "Bypass"
 msgstr ""
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:173
-msgid "Bypass China Mainland IP"
-msgstr ""
-
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:176
-msgid "Bypass China Mainland IP6"
-msgstr ""
-
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:189
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:183
 msgid "Bypass DSCP"
 msgstr ""
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:192
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:186
 msgid "Bypass FWMark"
 msgstr ""
 
@@ -105,8 +97,8 @@ msgstr ""
 msgid "Clear Log"
 msgstr ""
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:182
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:187
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:176
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:181
 msgid "Commonly Used Port"
 msgstr ""
 
@@ -167,11 +159,11 @@ msgstr ""
 msgid "Destination Port"
 msgstr ""
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:179
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:173
 msgid "Destination TCP Port to Proxy"
 msgstr ""
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:184
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:178
 msgid "Destination UDP Port to Proxy"
 msgstr ""
 
@@ -733,11 +725,11 @@ msgstr ""
 msgid "Remote"
 msgstr ""
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:196
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:190
 msgid "Reserved IP"
 msgstr ""
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:199
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:193
 msgid "Reserved IP6"
 msgstr ""
 
@@ -901,7 +893,7 @@ msgstr ""
 msgid "TUN Mode"
 msgstr ""
 
-#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:202
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/proxy.js:196
 msgid "TUN Timeout"
 msgstr ""
 
