@@ -9,7 +9,7 @@ on:
 jobs:
   release:
     name: ${{ matrix.arch }}-${{ matrix.branch }} release
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set-openwrt-nikki
     continue-on-error: true
     strategy:
       fail-fast: false
@@ -95,11 +95,11 @@ jobs:
         with:
           pattern: feed_nikki_*
           merge-multiple: true
-      
+
       - name: uncompress
         run: |
           for file in feed_nikki_*.tar.gz; do tar -x -z -f "$file"; done
-      
+
       - name: prepare
         run: |
           echo "${{ secrets.KEY_BUILD_PUB }}" > public/key-build.pub
