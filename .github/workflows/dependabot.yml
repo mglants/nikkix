@@ -17,7 +17,7 @@ jobs:
         name: checkout
         uses: actions/checkout@v4
         with:
-          repository: nikkinikki-org/OpenWrt-nikki
+          repository: mglants/OpenWrt-nikki
           ref: main
           path: OpenWrt-nikki
       - id: info
@@ -61,7 +61,7 @@ jobs:
         name: checkout
         uses: actions/checkout@v4
         with:
-          repository: nikkinikki-org/OpenWrt-nikki
+          repository: mglants/OpenWrt-nikki
           ref: main
           path: OpenWrt-nikki
       - id: update
