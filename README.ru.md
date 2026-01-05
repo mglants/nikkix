@@ -26,7 +26,7 @@
 
 ```shell
 # выполняется только один раз
-wget -O - https://github.com/nikkinikki-org/OpenWrt-nikki/raw/refs/heads/main/feed.sh | ash
+wget -O - https://github.com/mglants/OpenWrt-nikki/raw/refs/heads/main/feed.sh | ash
 ```
 
 #### 2. Установка
@@ -47,18 +47,18 @@ apk add luci-i18n-nikki-zh-cn
 ### B. Установка из релиза
 
 ```shell
-wget -O - https://github.com/nikkinikki-org/OpenWrt-nikki/raw/refs/heads/main/install.sh | ash
+wget -O - https://github.com/mglants/OpenWrt-nikki/raw/refs/heads/main/install.sh | ash
 ```
 
 ## Удаление и сброс настроек
 
 ```shell
-wget -O - https://github.com/nikkinikki-org/OpenWrt-nikki/raw/refs/heads/main/uninstall.sh | ash
+wget -O - https://github.com/mglants/OpenWrt-nikki/raw/refs/heads/main/uninstall.sh | ash
 ```
 
 ## Как использовать
 
-См. [Wiki](https://github.com/nikkinikki-org/OpenWrt-nikki/wiki)
+См. [Wiki](https://github.com/mglants/OpenWrt-nikki/wiki)
 
 ## Как это работает
 
@@ -74,7 +74,7 @@ wget -O - https://github.com/nikkinikki-org/OpenWrt-nikki/raw/refs/heads/main/un
 
 ```shell
 # добавить feed
-echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
+echo "src-git nikki https://github.com/mglants/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
 # обновить и установить feeds
 ./scripts/feeds update -a
@@ -101,7 +101,7 @@ make package/luci-app-nikki/compile
 
 ## Участники
 
-[![Contributors](https://contrib.rocks/image?repo=nikkinikki-org/OpenWrt-nikki)](https://github.com/nikkinikki-org/OpenWrt-nikki/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=nikkinikki-org/OpenWrt-nikki)](https://github.com/mglants/OpenWrt-nikki/graphs/contributors)
 
 ## Особая благодарность
 
