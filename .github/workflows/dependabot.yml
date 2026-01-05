@@ -29,32 +29,49 @@ jobs:
   get_latest_info:
     runs-on: ubuntu-latest
     outputs:
+      version_tag: ${{ steps.info.outputs.version_tag }}
       commit_date: ${{ steps.info.outputs.commit_date }}
       commit_sha: ${{ steps.info.outputs.commit_sha }}
       short_commit_sha: ${{ steps.info.outputs.short_commit_sha }}
       checksum: ${{ steps.info.outputs.checksum }}
     steps:
-      - id: checkout
-        name: checkout
+      - name: checkout
         uses: actions/checkout@v4
         with:
-          repository: 'MetaCubeX/mihomo'
-          ref: 'Alpha'
-          path: 'mihomo'
+          repository: MetaCubeX/mihomo
+          fetch-depth: 0
+          path: mihomo
+
       - id: info
-        name: info
+        shell: bash
         run: |
-          echo "commit_date=$(git -C mihomo log -n 1 --format=%cs)" >> $GITHUB_OUTPUT
-          echo "commit_sha=$(git -C mihomo rev-parse HEAD)" >> $GITHUB_OUTPUT
-          echo "short_commit_sha=$(git -C mihomo rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          set -euo pipefail
+
+          git -C mihomo fetch --tags --force
+
+          # последний semver-тег
+          latest_tag="$(
+            git -C mihomo tag -l 'v[0-9]*' | sort -V | tail -n 1
+          )"
+
+          echo "version_tag=$latest_tag" >> "$GITHUB_OUTPUT"
+
+          git -C mihomo checkout -q "$latest_tag"
+
+          echo "commit_date=$(git -C mihomo log -n 1 --format=%cs)" >> "$GITHUB_OUTPUT"
+          echo "commit_sha=$(git -C mihomo rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "short_commit_sha=$(git -C mihomo rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
           git -C mihomo config tar.xz.command "xz -c"
           git -C mihomo archive --output=mihomo.tar.xz HEAD
-          echo "checksum=$(sha256sum mihomo/mihomo.tar.xz | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
+
+          echo "checksum=$(sha256sum mihomo.tar.xz | awk '{print $1}')" >> "$GITHUB_OUTPUT"
+
   update:
     needs:
       - get_current_info
       - get_latest_info
-    if: ${{ needs.get_current_info.outputs.pkg_source_version != needs.get_latest_info.outputs.commit_sha }}
+    if: ${{ needs.get_current_info.outputs.pkg_source_version != needs.get_latest_info.outputs.version_tag }}
     runs-on: ubuntu-latest
     steps:
       - id: checkout
@@ -69,16 +86,21 @@ jobs:
         run: |
           sed -i "s/PKG_RELEASE:=.*/PKG_RELEASE:=1/" OpenWrt-nikki/nikki/Makefile
           sed -i "s/PKG_SOURCE_DATE:=.*/PKG_SOURCE_DATE:=${{ needs.get_latest_info.outputs.commit_date }}/" OpenWrt-nikki/nikki/Makefile
-          sed -i "s/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=${{ needs.get_latest_info.outputs.commit_sha }}/" OpenWrt-nikki/nikki/Makefile
+          sed -i "s/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=${{ needs.get_latest_info.outputs.version_tag }}/" OpenWrt-nikki/nikki/Makefile
           sed -i "s/PKG_MIRROR_HASH:=.*/PKG_MIRROR_HASH:=${{ needs.get_latest_info.outputs.checksum }}/" OpenWrt-nikki/nikki/Makefile
-          sed -i "s/PKG_BUILD_VERSION:=.*/PKG_BUILD_VERSION:=alpha-${{ needs.get_latest_info.outputs.short_commit_sha }}/" OpenWrt-nikki/nikki/Makefile
+          sed -i "s/PKG_BUILD_VERSION:=.*/PKG_BUILD_VERSION:=${{ needs.get_latest_info.outputs.version_tag }}/" OpenWrt-nikki/nikki/Makefile
       - id: pr
         name: pr
         uses: peter-evans/create-pull-request@v6
         with:
           path: OpenWrt-nikki
           branch: dependabot
-          commit-message: "build: update mihomo to ${{ needs.get_latest_info.outputs.short_commit_sha }}"
-          title: "build: update mihomo to ${{ needs.get_latest_info.outputs.short_commit_sha }}"
+          commit-message: "build: bump mihomo to ${{ needs.get_latest_info.outputs.version_tag }}"
+          title: "build: bump mihomo to ${{ needs.get_latest_info.outputs.version_tag }}"
           body: |
-            [Changelog](https://github.com/metacubex/mihomo/compare/${{ needs.get_current_info.outputs.pkg_source_version }}...${{  needs.get_latest_info.outputs.commit_sha }})
+            Stable release update
+
+            **mihomo:** `${{ needs.get_latest_info.outputs.version_tag }}`
+
+            🔗 Changelog:
+            https://github.com/MetaCubeX/mihomo/compare/${{ needs.get_current_info.outputs.pkg_source_version }}...${{ needs.get_latest_info.outputs.version_tag }}

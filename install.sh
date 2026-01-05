@@ -34,7 +34,7 @@ case "$DISTRIB_RELEASE" in
 esac
 
 # feed url
-repository_url="https://nikkinikki.pages.dev"
+repository_url="https://glantswrt.pages.dev"
 feed_url="$repository_url/$branch/$arch/nikki"
 
 if [ -x "/bin/opkg" ]; then
@@ -56,7 +56,7 @@ if [ -x "/bin/opkg" ]; then
 		lang_version=$(jsonfilter -i nikki.version -e "@['packages']['luci-i18n-nikki-${lang}']")
 		opkg install "$feed_url/luci-i18n-nikki-${lang}_${lang_version}_all.ipk"
 	done
-	
+
 	rm -f nikki.version
 elif [ -x "/usr/bin/apk" ]; then
 	# update feeds
@@ -73,4 +73,4 @@ elif [ -x "/usr/bin/apk" ]; then
 	done
 fi
 
-echo "success" 
+echo "success"
