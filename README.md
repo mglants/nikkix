@@ -30,6 +30,7 @@ Changes in this fork:
 - Access Control
 - Profile Mixin
 - Profile Editor
+- Profile Updater
 - Scheduled Restart
 - HWID Support
 

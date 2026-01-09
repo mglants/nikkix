@@ -1,4 +1,6 @@
-[English](README.md)| [中文](README.zh.md) | Русский
+![GitHub License](https://img.shields.io/github/license/mglants/nikkix?style=for-the-badge&logo=github) ![GitHub Tag](https://img.shields.io/github/v/release/mglants/nikkix?style=for-the-badge&logo=github) ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/mglants/nikkix/total?style=for-the-badge&logo=github) ![GitHub Repo stars](https://img.shields.io/github/stars/mglants/nikkix?style=for-the-badge&logo=github) [![Telegram](https://img.shields.io/badge/Telegram-gray?style=for-the-badge&logo=telegram)](https://t.me/nikkixnikkix_org)
+
+[English](README.md) | Русский
 
 # Nikkix
 
@@ -27,6 +29,7 @@
 - Контроль доступа
 - Объединение профилей (Profile Mixin)
 - Редактор профилей
+- Автоматическое обновление профилей
 - Плановый перезапуск
 - Поддержка HWID
 
