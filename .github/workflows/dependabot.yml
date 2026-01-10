@@ -75,9 +75,9 @@ jobs:
         id: hash_cals
         shell: bash
         env:
-          MAKEFILE: ./nikkix/Makefile
+          MAKEFILE: nikkix/nikkix/Makefile
         run: |
-          pkg_mirror_hash=$(.ci/scripts/get_PKG_MIRROR_HASH.sh | grep '^MIRROR_HASH: ' | awk '{print $2}')
+          pkg_mirror_hash=$(nikkix/.ci/scripts/get_PKG_MIRROR_HASH.sh | grep '^MIRROR_HASH: ' | awk '{print $2}')
           echo "PKG_MIRROR_HASH=$pkg_mirror_hash"
           sed -i "s|^\(PKG_MIRROR_HASH\b.*\)=.*|\1=$pkg_mirror_hash|" "$MAKEFILE"
       - id: pr
