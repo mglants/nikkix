@@ -25,7 +25,6 @@ config['tcp-concurrent'] = uci_bool(uci.get('nikkix', 'mixin', 'tcp_concurrent')
 config['disable-keep-alive'] = uci_bool(uci.get('nikkix', 'mixin', 'disable_tcp_keep_alive'));
 config['keep-alive-idle'] = uci_int(uci.get('nikkix', 'mixin', 'tcp_keep_alive_idle'));
 config['keep-alive-interval'] = uci_int(uci.get('nikkix', 'mixin', 'tcp_keep_alive_interval'));
-config['global-client-fingerprint'] = uci.get('nikkix', 'mixin', 'global_client_fingerprint');
 
 config['external-ui'] = uci.get('nikkix', 'mixin', 'ui_path');
 config['external-ui-name'] = uci.get('nikkix', 'mixin', 'ui_name');

@@ -34,6 +34,8 @@ define Package/nikkix
   URL:=https://wiki.metacubex.one
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle +curl +yq firewall4 +ip-full +kmod-inet-diag +kmod-nft-socket +kmod-nft-tproxy +kmod-tun
   PROVIDES:=mihomo
+  ALTERNATIVES:=\
+    300:/usr/bin/mihomo:/usr/libexec/nikki
 endef
 
 define Package/nikkix/description
@@ -46,7 +48,9 @@ define Package/nikkix/conffiles
 endef
 
 define Package/nikkix/install
-	$(call GoPackage/Package/Install/Bin,$(1))
+	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	$(INSTALL_DIR) $(1)/usr/libexec/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/mihomo $(1)/usr/libexec/nikki
 
 	$(INSTALL_DIR) $(1)/etc/nikkix
 	$(INSTALL_DIR) $(1)/etc/nikkix/ucode
