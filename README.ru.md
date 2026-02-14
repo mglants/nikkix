@@ -19,7 +19,7 @@
 
 ## Требования
 
-- OpenWrt >= 23.05
+- OpenWrt >= 24.10
 - Ядро Linux >= 5.13
 - firewall4
 
