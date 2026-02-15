@@ -81,7 +81,6 @@ config['dns']['fake-ip-filter-mode'] = uci.get('nikkix', 'mixin', 'fake_ip_filte
 
 config['dns']['respect-rules'] = uci_bool(uci.get('nikkix', 'mixin', 'dns_respect_rules'));
 config['dns']['prefer-h3'] = uci_bool(uci.get('nikkix', 'mixin', 'dns_doh_prefer_http3'));
-config['dns']['direct-nameserver-follow-policy'] = uci_bool(uci.get('nikkix', 'mixin', 'dns_direct_nameserver_follow_policy'));
 config['dns']['use-system-hosts'] = uci_bool(uci.get('nikkix', 'mixin', 'dns_system_hosts'));
 config['dns']['use-hosts'] = uci_bool(uci.get('nikkix', 'mixin', 'dns_hosts'));
 if (uci_bool(uci.get('nikkix', 'mixin', 'hosts'))) {
@@ -106,6 +105,16 @@ if (uci_bool(uci.get('nikkix', 'mixin', 'dns_nameserver'))) {
 		push(config['dns'][section.type], ...uci_array(section.nameserver));
 	})
 }
+if (uci_bool(uci.get('nikkix', 'mixin', 'dns_proxy_server_nameserver_policy'))) {
+	config['dns']['proxy-server-nameserver-policy'] = {};
+	uci.foreach('nikkix', 'proxy_server_nameserver_policy', (section) => {
+		if (!uci_bool(section.enabled)) {
+			return;
+		}
+		config['dns']['proxy-server-nameserver-policy'][section.matcher] = uci_array(section.nameserver);
+	});
+}
+config['dns']['direct-nameserver-follow-policy'] = uci_bool(uci.get('nikkix', 'mixin', 'dns_direct_nameserver_follow_policy'))
 if (uci_bool(uci.get('nikkix', 'mixin', 'dns_nameserver_policy'))) {
 	config['dns']['nameserver-policy'] = {};
 	uci.foreach('nikkix', 'nameserver_policy', (section) => {

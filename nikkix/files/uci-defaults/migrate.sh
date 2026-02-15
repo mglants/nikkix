@@ -201,6 +201,11 @@ procd=$(uci -q get nikkix.procd); [ -z "$procd" ] && {
 	uci del nikkix.env
 }
 
+# since v1.25.1
+
+dummy_device=$(uci -q get nikki.routing.dummy_device); [ -z "$dummy_device" ] && uci set nikki.routing.dummy_device=nikki-dummy
+
+
 # commit
 uci commit nikkix
 

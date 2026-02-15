@@ -273,6 +273,10 @@ msgstr ""
 msgid "Edit Nameservers"
 msgstr ""
 
+#: applications/luci-app-nikki/htdocs/luci-static/resources/view/nikki/mixin.js:347
+msgid "Edit Proxy Server Nameserver Policies"
+msgstr ""
+
 #: applications/luci-app-nikkix/htdocs/luci-static/resources/view/nikkix/mixin.js:440
 msgid "Edit Rule Providers"
 msgstr ""
