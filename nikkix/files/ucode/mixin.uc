@@ -114,7 +114,7 @@ if (uci_bool(uci.get('nikkix', 'mixin', 'dns_proxy_server_nameserver_policy'))) 
 		config['dns']['proxy-server-nameserver-policy'][section.matcher] = uci_array(section.nameserver);
 	});
 }
-config['dns']['direct-nameserver-follow-policy'] = uci_bool(uci.get('nikkix', 'mixin', 'dns_direct_nameserver_follow_policy'))
+config['dns']['direct-nameserver-follow-policy'] = uci_bool(uci.get('nikkix', 'mixin', 'dns_direct_nameserver_follow_policy'));
 if (uci_bool(uci.get('nikkix', 'mixin', 'dns_nameserver_policy'))) {
 	config['dns']['nameserver-policy'] = {};
 	uci.foreach('nikkix', 'nameserver_policy', (section) => {
