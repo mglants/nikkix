@@ -30,6 +30,11 @@ config['external-ui'] = uci.get('nikkix', 'mixin', 'ui_path');
 config['external-ui-name'] = uci.get('nikkix', 'mixin', 'ui_name');
 config['external-ui-url'] = uci.get('nikkix', 'mixin', 'ui_url');
 config['external-controller'] = uci.get('nikkix', 'mixin', 'api_listen');
+config['external-controller-tls'] = uci.get('nikki', 'mixin', 'api_tls_listen');
+config['tls'] = {};
+config['tls']['certificate'] = uci.get('nikki', 'mixin', 'api_tls_cert');
+config['tls']['private-key'] = uci.get('nikki', 'mixin', 'api_tls_key');
+config['tls']['ech-key'] = uci.get('nikki', 'mixin', 'api_tls_ech_key');
 config['secret'] = uci.get('nikkix', 'mixin', 'api_secret');
 
 config['allow-lan'] = uci_bool(uci.get('nikkix', 'mixin', 'allow_lan'));
