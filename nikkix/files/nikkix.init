@@ -97,6 +97,11 @@ start_service() {
 	### mixin file content
 	local mixin_file_content
 	config_get_bool mixin_file_content "mixin" "mixin_file_content" 0
+	## core config
+	local redirect_listener_name tproxy_listener_name tun_listener_name
+	config_get redirect_listener_name "core" "redirect_listener_name"
+	config_get tproxy_listener_name "core" "tproxy_listener_name"
+	config_get tun_listener_name "core" "tun_listener_name"
 	## proxy config
 	local proxy_enabled ipv4_dns_hijack ipv6_dns_hijack tcp_mode udp_mode
 	config_get_bool proxy_enabled "proxy" "enabled" 0
