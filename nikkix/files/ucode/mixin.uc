@@ -64,11 +64,6 @@ config['tun']['gso-max-size'] = uci_int(uci.get('nikkix', 'mixin', 'tun_gso_max_
 if (uci_bool(uci.get('nikkix', 'mixin', 'tun_dns_hijack'))) {
 	config['tun']['dns-hijack'] = uci_array(uci.get('nikkix', 'mixin', 'tun_dns_hijacks'));
 }
-if (uci_bool(uci.get('nikkix', 'proxy', 'enabled'))) {
-	config['tun']['auto-route'] = false;
-	config['tun']['auto-redirect'] = false;
-	config['tun']['auto-detect-interface'] = false;
-}
 
 config['dns'] = {};
 config['dns']['enable'] = uci_bool(uci.get('nikkix', 'mixin', 'dns_enabled'));
