@@ -2,6 +2,8 @@
 
 中文 | [English](README.md)
 
+> **已归档：** 本项目已停止维护，请改用 [PureWRT](https://github.com/mglants/purewrt)。
+
 # Nikki
 
 在 OpenWrt 上使用 Mihomo 进行透明代理。

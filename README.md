@@ -2,6 +2,8 @@
 
 English | [中文](README.zh.md)
 
+> **Archived:** This project is no longer maintained. Please use [PureWRT](https://github.com/mglants/purewrt) instead.
+
 # Nikki
 
 Transparent Proxy with Mihomo on OpenWrt.
